@@ -1,0 +1,52 @@
+.App {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 100% 50%;
+
+  font-family: Menlo;
+  height: 100vh;
+  overflow: scroll;
+
+  .item {
+    grid-template-rows: 100%;
+    height: auto;
+    overflow: scroll;
+  }
+
+  .item-0 {
+    height: auto;
+    overflow: scroll;
+  }
+
+  .item-1 {
+    grid-template-rows: 100%;
+    height: 100vh;
+  }
+
+  .item-2 {
+    grid-template-row: 50%;
+    height: 50vh;
+  }
+
+  .addon {
+    height: 100vh;
+  }
+}
+
+.splited {
+  grid-template-columns: 50% 50%;
+
+}
+
+.splited-1 {
+  grid-template-rows: 50%;
+}
+
+.splited-2 {
+  grid-template-columns: 33.3% 33.3% 33.3%;
+
+}
+
+// .splited-2 {
+//   grid-template-columns: 100%;
+// }

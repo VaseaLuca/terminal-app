@@ -1,0 +1,60 @@
+.terminal {
+  width: 100%;
+  overflow: scroll;
+  background-color: black;
+  color: #fff;
+  font-size: 14;
+
+  .terminal-navbar {
+    .dropdown-item-block {
+      position: absolute;
+      background-color: rgba(41, 41, 41, 0.836);
+
+      .dropdown-item {
+        padding: 2px 0;
+        cursor: pointer;
+        transition: filter;
+
+        &:hover {
+          filter: opacity(0.85);
+        }
+      }
+    }
+  }
+
+  .terminal-content {
+    min-height: 100vh;
+    padding: 10px 0 0 0;
+
+    .terminal-commands {
+      margin: 0 10px 5px 10px;
+
+      .terminal-output {}
+    }
+
+    .command-line {
+      display: flex;
+    }
+
+    form {
+      display: flex;
+      width: 100%;
+    }
+
+    span {
+      vertical-align: middle;
+      margin: 0 10px 0 10px;
+
+    }
+
+    input {
+      width: 100%;
+      background-color: transparent;
+      border: 0px none;
+      outline: none;
+      color: #fff;
+      font-family: Menlo;
+      font-size: 14;
+    }
+  }
+}
