@@ -15,7 +15,11 @@ function Terminal({ countTerminals, addTerminalHandler, killTerminalHandler }) {
   const [count, setCount] = useState(0);
   const inputFocus = useRef(null);
   const [showColorPicker, setShowColorPicker] = useState(false);
-  let getData = JSON.parse(sessionStorage.getItem('terminal'))
+  let getData = JSON.parse(sessionStorage.getItem(countTerminals))
+  console.log(getData)
+  for (let i = 0; i < getData; i++){
+    console.log(getData);
+  }
   const [color, setColor] = useState(getData? getData.bgColor : '#00000' );
   const [showTextColorPicker, setShowTextColorPicker] = useState(false);
   const [textColor, setTextColor] = useState(getData? getData.txtColor : '#fff');
@@ -46,8 +50,7 @@ function Terminal({ countTerminals, addTerminalHandler, killTerminalHandler }) {
       bgColor: color,
       textSize: changeTextSize,
     }
-    sessionStorage.setItem('terminal', JSON.stringify(session));
-    console.log(sessionStorage)
+    sessionStorage.setItem(countTerminals, JSON.stringify(session));
   
 
 
