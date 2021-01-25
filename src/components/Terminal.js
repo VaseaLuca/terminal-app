@@ -14,15 +14,13 @@ function Terminal({ countTerminals, addTerminalHandler, killTerminalHandler }) {
   const [commandsArr, setCommandsArr] = useState([]);
   const [count, setCount] = useState(0);
   const inputFocus = useRef(null);
-  const id = sessionStorage.getItem("terminal") || 0;
   const [showColorPicker, setShowColorPicker] = useState(false);
-  const [color, setColor] = useState(sessionStorage.getItem("bgColor") || "0");
+  let getData = JSON.parse(sessionStorage.getItem('terminal'))
+  const [color, setColor] = useState(getData? getData.bgColor : '#00000' );
   const [showTextColorPicker, setShowTextColorPicker] = useState(false);
-  const [textColor, setTextColor] = useState(sessionStorage.getItem("txtColor") || '0' );
+  const [textColor, setTextColor] = useState(getData? getData.txtColor : '#fff');
   const [showTextSizeSlider, setShowTextSizeSlider] = useState(false);
-  const [changeTextSize, setChangeTextSize] = useState(
-    sessionStorage.getItem("textSize") || 14
-  );
+  const [changeTextSize, setChangeTextSize] = useState(getData? getData.textSize : '14');
 
   useEffect(() => {
     if (ws) {
@@ -42,14 +40,17 @@ function Terminal({ countTerminals, addTerminalHandler, killTerminalHandler }) {
       };
     }
 
-    sessionStorage.setItem(
-      id,
-      JSON.stringify({
-        txtColor: textColor,
-        bgColor: color,
-        textSize: changeTextSize,
-      })
-    );
+    const session = {
+      id: countTerminals,
+      txtColor: textColor,
+      bgColor: color,
+      textSize: changeTextSize,
+    }
+    sessionStorage.setItem('terminal', JSON.stringify(session));
+    console.log(sessionStorage)
+  
+
+
     // sessionStorage.setItem("txtColor", textColor);
     // sessionStorage.setItem("bgColor", color);
     // sessionStorage.setItem("textSize", changeTextSize);
@@ -62,7 +63,7 @@ function Terminal({ countTerminals, addTerminalHandler, killTerminalHandler }) {
     //   const input = document.querySelector('input');
     //   input.focus();
     // }
-  }, [ws, commandsArr, textColor, color, changeTextSize, id]);
+  }, [ws, commandsArr, textColor, color, changeTextSize, countTerminals]);
   // the arrow up and down function
   function onArrowsHandle(e) {
     if (commandsArr.length > 0) {
@@ -207,7 +208,7 @@ function Terminal({ countTerminals, addTerminalHandler, killTerminalHandler }) {
         {showColorPicker && (
           <ChromePicker
             color={color}
-            onChange={(updatedColor) => setColor(updatedColor.hex)}
+            onChange={updatedColor => setColor(updatedColor.hex)}
             onChangeComplete={onChangeColorClose}
           />
         )}

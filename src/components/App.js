@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 
 import './App.scss';
 import  Terminal from './Terminal';
 
 
 function App() {
-
-  const [countTerminals, setCountTerminals] = useState(1);
+  const initialCount = () => Number(JSON.parse(sessionStorage.getItem('id')|| 1));
+  const [countTerminals, setCountTerminals] = useState(initialCount);
   const terminals = [];
-  console.log(countTerminals);
 
-  
+  useEffect(() => {
+    sessionStorage.setItem('id', countTerminals);
+  }, [countTerminals]);
+ 
   function addTerminalHandler() {
     setCountTerminals(countTerminals + 1);
   }
@@ -18,7 +20,7 @@ function App() {
     setCountTerminals(countTerminals - 1);
   }
 
-  for (let i = 0; i <countTerminals; i++) {
+  for (let i = 0; i < countTerminals; i++) {
     terminals.push(
       <Terminal
         key={i}
@@ -31,9 +33,9 @@ function App() {
 
   return (
     <div
-      className={`App ${countTerminals > 1 && "splited"} ${countTerminals >= 2 && "splited-1"} ${
-        countTerminals >= 4 && "splited-2"
-      }`}
+      className={`App ${countTerminals > 1 && "splited"} ${
+        countTerminals >= 2 && "splited-1"
+      } ${countTerminals >= 4 && "splited-2"}`}
     >
       {console.log(terminals)}
       {terminals.map((item, index) => {
@@ -130,4 +132,3 @@ export default App;
 // }
 
 // export default App;
-
