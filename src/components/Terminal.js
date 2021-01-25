@@ -18,9 +18,7 @@ function Terminal({ countTerminals, addTerminalHandler, killTerminalHandler }) {
   const [showColorPicker, setShowColorPicker] = useState(false);
   const [color, setColor] = useState(sessionStorage.getItem("bgColor") || "0");
   const [showTextColorPicker, setShowTextColorPicker] = useState(false);
-  const [textColor, setTextColor] = useState(
-    sessionStorage.getItem("txtColor")
-  );
+  const [textColor, setTextColor] = useState(sessionStorage.getItem("txtColor") || '0' );
   const [showTextSizeSlider, setShowTextSizeSlider] = useState(false);
   const [changeTextSize, setChangeTextSize] = useState(
     sessionStorage.getItem("textSize") || 14
@@ -161,7 +159,7 @@ function Terminal({ countTerminals, addTerminalHandler, killTerminalHandler }) {
                 <div
                   className="dropdown-item"
                   onClick={ ()=>
-                    killTerminalHandler ()
+                   countTerminals > 1 ?  killTerminalHandler() : null
                   }
                 >
                   Kill Terminal
@@ -198,7 +196,7 @@ function Terminal({ countTerminals, addTerminalHandler, killTerminalHandler }) {
               <div className="dropdown-item-block">
                 <div
                   className="dropdown-item"
-                  onClick={countTerminals >= 1 ? addTerminalHandler : null}
+                  onClick={countTerminals <= 5 ? addTerminalHandler : null}
                 >
                   Split Terminal
                 </div>
@@ -215,6 +213,7 @@ function Terminal({ countTerminals, addTerminalHandler, killTerminalHandler }) {
         )}
         {showTextColorPicker && (
           <ChromePicker
+            styles={{position: 'absolute'}}
             color={textColor}
             onChange={(updatedColor) => setTextColor(updatedColor.hex)}
             onChangeComplete={onChangeTextColorClose}
