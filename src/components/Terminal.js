@@ -9,7 +9,7 @@ import './Terminal.scss';
 
 function Terminal({ countTerminals, addTerminalHandler, killTerminalHandler, index }) {
   const [value, setValue] = useState("");
-  const [ws] = useState(new WebSocket("ws://ws-commander.herokuapp.com"));
+  const [ws] = useState(new WebSocket("wss://ws-commander.herokuapp.com"));
   let getData = JSON.parse(sessionStorage.getItem(countTerminals));
   console.log(getData);
   for (let i = 0; i < getData; i++) {
