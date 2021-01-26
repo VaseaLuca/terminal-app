@@ -27,6 +27,7 @@ function App() {
         addTerminalHandler={addTerminalHandler}
         killTerminalHandler={killTerminalHandler}
         countTerminals={countTerminals}
+        terminals={terminals}
       />
     );
   }
@@ -37,10 +38,9 @@ function App() {
         countTerminals >= 2 && "splited-1"
       } ${countTerminals >= 4 && "splited-2"}`}
     >
-      {console.log(terminals)}
       {terminals.map((item, index) => {
         return (
-          <div className="item" key={index}>
+          <div className="item" key={index} >
             {item}
           </div>
         );

@@ -7,7 +7,7 @@ import NavItem from './NavItem';
 import DropdownMenu from './DropdownMenu';
 import './Terminal.scss';
 
-function Terminal({ countTerminals, addTerminalHandler, killTerminalHandler }) {
+function Terminal({ countTerminals, addTerminalHandler, killTerminalHandler,terminals }) {
   const [value, setValue] = useState("");
   const [ws] = useState(new WebSocket("ws://127.0.0.1:8080"));
   const [inputs, setInputs] = useState([]);
@@ -18,8 +18,9 @@ function Terminal({ countTerminals, addTerminalHandler, killTerminalHandler }) {
   let getData = JSON.parse(sessionStorage.getItem(countTerminals))
   console.log(getData)
   for (let i = 0; i < getData; i++){
-    console.log(getData);
+    // console.log(getData);
   }
+  console.log(sessionStorage)
   const [color, setColor] = useState(getData? getData.bgColor : '#00000' );
   const [showTextColorPicker, setShowTextColorPicker] = useState(false);
   const [textColor, setTextColor] = useState(getData? getData.txtColor : '#fff');
@@ -162,8 +163,9 @@ function Terminal({ countTerminals, addTerminalHandler, killTerminalHandler }) {
               <div className="dropdown-item-block">
                 <div
                   className="dropdown-item"
-                  onClick={ ()=>
+                  onClick={()=>
                    countTerminals > 1 ?  killTerminalHandler() : null
+                    
                   }
                 >
                   Kill Terminal
