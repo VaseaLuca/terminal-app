@@ -239,7 +239,7 @@ function Terminal({
           To perform multiple commands split them using ';'
         </div>
         <div className="terminal-commands">
-          Use arrows up/down to scroll through inserted commands
+          Use arrow up/down to scroll through inserted commands
         </div>
         <div className="terminal-commands">
           If terminal session ends, refresh the browser, it will remember
