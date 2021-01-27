@@ -38,7 +38,6 @@ function App() {
       {terminals.map((item, index) => {
         return (
           <div className={`box-${index}`} key={index}>
-            {/* ${index > 1 && "item-2"} */}
             {item}
           </div>
         );
