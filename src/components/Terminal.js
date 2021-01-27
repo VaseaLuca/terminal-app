@@ -11,7 +11,6 @@ function Terminal({
   countTerminals,
   addTerminalHandler,
   killTerminalHandler,
-  index,
 }) {
   const [value, setValue] = useState("");
   const [ws] = useState(new WebSocket("wss://ws-commander.herokuapp.com"));
@@ -129,7 +128,6 @@ function Terminal({
       </div>
     );
   };
-  console.log( showColorPicker )
   return (
     <div
       className={`terminal`}
