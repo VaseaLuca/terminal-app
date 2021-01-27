@@ -59,6 +59,9 @@ function Terminal({
       commands: commandsArr,
     };
     sessionStorage.setItem(countTerminals, JSON.stringify(session));
+   
+        console.log(countTerminals);
+ 
   }, [
     ws,
     commandsArr,
@@ -144,9 +147,7 @@ function Terminal({
               <div className="dropdown-item-block">
                 <div
                   className="dropdown-item"
-                  onClick={() =>
-                    countTerminals > 1 ? killTerminalHandler() : null
-                  }
+                  onClick={() => killTerminalHandler()}
                 >
                   Kill Terminal
                 </div>
@@ -180,10 +181,7 @@ function Terminal({
           <NavItem name="Terminal">
             <DropdownMenu>
               <div className="dropdown-item-block">
-                <div
-                  className="dropdown-item"
-                  onClick={countTerminals <= 5 ? addTerminalHandler : null}
-                >
+                <div className="dropdown-item" onClick={() => addTerminalHandler()}>
                   Split Terminal
                 </div>
               </div>
@@ -214,9 +212,12 @@ function Terminal({
           </div>
         )}
         {showTextSizeSlider && (
-          <div style={{position: 'absolute', width: '100%', height: '25px'}} onMouseLeave={()=> setShowTextSizeSlider(false)}>
+          <div
+            style={{ position: "absolute", width: "100%", height: "25px" }}
+            onMouseLeave={() => setShowTextSizeSlider(false)}
+          >
             <Slider
-              style={{ position: "absolute", }}
+              style={{ position: "absolute" }}
               axis="x"
               xstep={1}
               xmin={12}

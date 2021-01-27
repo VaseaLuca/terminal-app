@@ -14,10 +14,10 @@ function App() {
   }, [countTerminals]);
  
   function addTerminalHandler() {
-    setCountTerminals(countTerminals + 1);
+   countTerminals <= 5 && setCountTerminals(countTerminals + 1);
   }
   function killTerminalHandler() {
-    setCountTerminals(countTerminals - 1);
+   countTerminals > 1 && setCountTerminals(countTerminals - 1);
   }
 
   for (let i = 1; i <= countTerminals; i++) {
