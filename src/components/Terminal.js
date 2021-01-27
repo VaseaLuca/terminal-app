@@ -1,31 +1,37 @@
-import React,{ useState, useEffect, useRef } from 'react';
-import { ChromePicker } from 'react-color';
-import Slider from 'react-input-slider';
+import React, { useState, useEffect, useRef } from "react";
+import { ChromePicker } from "react-color";
+import Slider from "react-input-slider";
 
-import Navbar from './Navbar';
-import NavItem from './NavItem';
-import DropdownMenu from './DropdownMenu';
-import './Terminal.scss';
+import Navbar from "./Navbar";
+import NavItem from "./NavItem";
+import DropdownMenu from "./DropdownMenu";
+import "./Terminal.scss";
 
-function Terminal({ countTerminals, addTerminalHandler, killTerminalHandler, index }) {
+function Terminal({
+  countTerminals,
+  addTerminalHandler,
+  killTerminalHandler,
+  index,
+}) {
   const [value, setValue] = useState("");
   const [ws] = useState(new WebSocket("wss://ws-commander.herokuapp.com"));
   let getData = JSON.parse(sessionStorage.getItem(countTerminals));
-  console.log(getData);
-  for (let i = 0; i < getData; i++) {
-    console.log(getData);
-  }
-  console.log(sessionStorage);
   const [inputs, setInputs] = useState([]);
-  const [commandsArr, setCommandsArr] = useState(getData? getData.commands : []);
+  const [commandsArr, setCommandsArr] = useState(
+    getData ? getData.commands : []
+  );
   const [count, setCount] = useState(0);
   const inputFocus = useRef(null);
   const [showColorPicker, setShowColorPicker] = useState(false);
-  const [color, setColor] = useState(getData? getData.bgColor : '#00000' );
+  const [color, setColor] = useState(getData ? getData.bgColor : "#00000");
   const [showTextColorPicker, setShowTextColorPicker] = useState(false);
-  const [textColor, setTextColor] = useState(getData? getData.txtColor : '#fff');
+  const [textColor, setTextColor] = useState(
+    getData ? getData.txtColor : "#fff"
+  );
   const [showTextSizeSlider, setShowTextSizeSlider] = useState(false);
-  const [changeTextSize, setChangeTextSize] = useState(getData? getData.textSize : '14');
+  const [changeTextSize, setChangeTextSize] = useState(
+    getData ? getData.textSize : "14"
+  );
 
   useEffect(() => {
     if (ws) {
@@ -44,7 +50,7 @@ function Terminal({ countTerminals, addTerminalHandler, killTerminalHandler, ind
         }
       };
     }
-  
+
     const session = {
       id: countTerminals,
       txtColor: textColor,
@@ -54,8 +60,15 @@ function Terminal({ countTerminals, addTerminalHandler, killTerminalHandler, ind
       commands: commandsArr,
     };
     sessionStorage.setItem(countTerminals, JSON.stringify(session));
-
-  }, [ws, commandsArr, textColor, color, changeTextSize, countTerminals,inputs]);
+  }, [
+    ws,
+    commandsArr,
+    textColor,
+    color,
+    changeTextSize,
+    countTerminals,
+    inputs,
+  ]);
   // the arrow up and down function
   function onArrowsHandle(e) {
     if (commandsArr.length > 0) {
@@ -81,9 +94,6 @@ function Terminal({ countTerminals, addTerminalHandler, killTerminalHandler, ind
 
   function handleChange(e) {
     setValue(e.target.value);
-    // if(e.code === 'ArrowUp'){
-    //   setValue(commandsArr[count]);
-    // }
   }
   function execQueue() {
     if (!value) return;
@@ -105,21 +115,6 @@ function Terminal({ countTerminals, addTerminalHandler, killTerminalHandler, ind
   function handleClickFocus() {
     inputFocus.current.focus();
   }
-  function onChangeColorClose() {
-    setTimeout(() => {
-      setShowColorPicker(!showColorPicker);
-    }, 1500);
-  }
-  function onChangeTextColorClose() {
-    setTimeout(() => {
-      setShowTextColorPicker(!showTextColorPicker);
-    }, 1500);
-  }
-  function onChangeTextSizeClose() {
-    setTimeout(() => {
-      setShowTextSizeSlider(!showTextSizeSlider);
-    }, 300);
-  }
 
   const ShowOnScrenCommands = () => {
     return (
@@ -134,7 +129,7 @@ function Terminal({ countTerminals, addTerminalHandler, killTerminalHandler, ind
       </div>
     );
   };
-
+  console.log( showColorPicker )
   return (
     <div
       className={`terminal`}
@@ -171,7 +166,7 @@ function Terminal({ countTerminals, addTerminalHandler, killTerminalHandler, ind
                 </div>
                 <div
                   className="dropdown-item"
-                  onClick={() => setShowTextColorPicker(!showTextColorPicker)}
+                  onClick={() => setShowTextColorPicker(true)}
                 >
                   Text Color
                 </div>
@@ -198,31 +193,40 @@ function Terminal({ countTerminals, addTerminalHandler, killTerminalHandler, ind
           </NavItem>
         </Navbar>
         {showColorPicker && (
-          <ChromePicker
-            color={color}
-            onChange={(updatedColor) => setColor(updatedColor.hex)}
-            onChangeComplete={onChangeColorClose}
-          />
+          <div
+            style={{ position: "absolute", width: "225px" }}
+            onMouseLeave={() => setShowColorPicker(false)}
+          >
+            <ChromePicker
+              color={color}
+              onChange={(updatedColor) => setColor(updatedColor.hex)}
+            />
+          </div>
         )}
         {showTextColorPicker && (
-          <ChromePicker
-            styles={{ position: "absolute" }}
-            color={textColor}
-            onChange={(updatedColor) => setTextColor(updatedColor.hex)}
-            onChangeComplete={onChangeTextColorClose}
-          />
+          <div
+            style={{ position: "absolute", width: "225px" }}
+            onMouseLeave={() => setShowTextColorPicker(false)}
+          >
+            <ChromePicker
+              styles={{ position: "absolute" }}
+              color={textColor}
+              onChange={(updatedColor) => setTextColor(updatedColor.hex)}
+            />
+          </div>
         )}
         {showTextSizeSlider && (
-          <Slider
-            style={{ position: "absolute" }}
-            axis="x"
-            xstep={1}
-            xmin={12}
-            xmax={18}
-            x={changeTextSize}
-            onChange={({ x }) => setChangeTextSize(x)}
-            onDragEnd={onChangeTextSizeClose}
-          />
+          <div style={{position: 'absolute', width: '100%', height: '25px'}} onMouseLeave={()=> setShowTextSizeSlider(false)}>
+            <Slider
+              style={{ position: "absolute", }}
+              axis="x"
+              xstep={1}
+              xmin={12}
+              xmax={18}
+              x={changeTextSize}
+              onChange={({ x }) => setChangeTextSize(x)}
+            />
+          </div>
         )}
       </nav>
       <div className="terminal-content" onClick={handleClickFocus}>
@@ -258,4 +262,4 @@ function Terminal({ countTerminals, addTerminalHandler, killTerminalHandler, ind
   );
 }
 
-export default Terminal
+export default Terminal;

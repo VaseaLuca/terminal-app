@@ -1,19 +1,18 @@
-import React,{useState} from 'react'
+import React, { useState } from "react";
 
-import './NavItem.scss';
+import "./NavItem.scss";
 
-function NavItem({name,children}) {
+function NavItem({ name, children }) {
+  const [open, setOpen] = useState(false);
 
-    const [open, setOpen] = useState(false);
-
-    const childrenComponent = React.Children.map(children, child => {
-      return React.cloneElement(child, {
-        closeMenuFunc: ()=> setOpen(!open)
-      })
-    })
+  const childrenComponent = React.Children.map(children, (child) => {
+    return React.cloneElement(child, {
+      closeMenuFunc: () => setOpen(!open),
+    });
+  });
 
   return (
-    <div className="navitem">
+    <div className="navitem" onMouseLeave={() => setOpen(false)} >
       <div className="nav-item" onClick={() => setOpen(!open)}>
         {name}
       </div>
@@ -22,4 +21,4 @@ function NavItem({name,children}) {
   );
 }
 
-export default NavItem
+export default NavItem;

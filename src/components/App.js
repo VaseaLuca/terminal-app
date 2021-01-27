@@ -20,13 +20,12 @@ function App() {
     setCountTerminals(countTerminals - 1);
   }
 
-  for (let i = 0; i < countTerminals; i++) {
+  for (let i = 1; i <= countTerminals; i++) {
     terminals.push(
       <Terminal
-        i={i}
         addTerminalHandler={addTerminalHandler}
         killTerminalHandler={killTerminalHandler}
-        countTerminals={countTerminals}
+        countTerminals={i}
         terminals={terminals}
       />
     );
@@ -34,13 +33,12 @@ function App() {
 
   return (
     <div
-      className={`App ${countTerminals > 1 && "splited"} ${
-        countTerminals >= 2 && "splited-1"
-      } ${countTerminals >= 4 && "splited-2"}`}
+      className={`App ${countTerminals > 1 && 'splited'} ${countTerminals >2 && 'splited-1' } ${countTerminals === 4 && 'splited-2'} ${countTerminals > 4 && 'splited-3'} ${countTerminals === 6 && 'splited-4'}`}
     >
       {terminals.map((item, index) => {
         return (
-          <div className="item" key={index}>
+          <div className={`box-${index}`} key={index}>
+            {/* ${index > 1 && "item-2"} */}
             {item}
           </div>
         );

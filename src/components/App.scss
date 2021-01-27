@@ -1,52 +1,78 @@
 .App {
   display: grid;
   width: 100%;
-  grid-template-columns: 100% 50%;
-
+  grid-template-columns: 1fr;
   font-family: Menlo;
-  height: 100vh;
   overflow: scroll;
-
-  .item {
-    grid-template-rows: 100%;
-    height: auto;
-    overflow: scroll;
-  }
-
-  .item-0 {
-    height: auto;
-    overflow: scroll;
-  }
-
-  .item-1 {
-    grid-template-rows: 100%;
-    height: 100vh;
-  }
+  grid-template-areas: "box0";
 
   .item-2 {
-    grid-template-row: 50%;
     height: 50vh;
+    overflow: scroll;
   }
 
-  .addon {
-    height: 100vh;
+  .box-0 {
+    grid-area: box0;
+    overflow: scroll;
+  }
+
+  .box-1 {
+    grid-area: box1;
+    overflow: scroll;
+  }
+
+  .box-2 {
+    grid-area: box2;
+    overflow: scroll;
+  }
+
+  .box-3 {
+    grid-area: box3;
+    overflow: scroll;
+  }
+
+  .box-4 {
+    grid-area: box4;
+    overflow: scroll;
+  }
+
+  .box-5 {
+    grid-area: box5;
+    overflow: scroll;
   }
 }
 
 .splited {
-  grid-template-columns: 50% 50%;
-
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "box0 box1";
 }
 
 .splited-1 {
-  grid-template-rows: 50%;
+  height: 100vh;
+  grid-template-rows: 50vh 50vh;
+  grid-template-areas: "box0 box1"
+    "box2 box1";
 }
 
 .splited-2 {
-  grid-template-columns: 33.3% 33.3% 33.3%;
-
+  height: 100vh;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "box0 box1"
+    "box2 box3";
 }
 
-// .splited-2 {
-//   grid-template-columns: 100%;
-// }
+.splited-3 {
+  height: 100vh;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "box0 box1 box2"
+    "box3 box4 box2";
+}
+
+.splited-4 {
+  height: 100vh;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "box0 box1 box2"
+    "box3 box4 box5";
+}

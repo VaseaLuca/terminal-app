@@ -1,10 +1,11 @@
 .navitem {
+
   .nav-item {
     display: flex;
     cursor: pointer;
     padding: 0 10px;
     transition: filter 0.2s;
-
+  
     &:hover {
       filter: opacity(0.85);
     }
