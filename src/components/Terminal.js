@@ -181,7 +181,10 @@ function Terminal({
           <NavItem name="Terminal">
             <DropdownMenu>
               <div className="dropdown-item-block">
-                <div className="dropdown-item" onClick={() => addTerminalHandler()}>
+                <div
+                  className="dropdown-item"
+                  onClick={() => addTerminalHandler()}
+                >
                   Split Terminal
                 </div>
               </div>
@@ -234,6 +237,9 @@ function Terminal({
         </div>
         <div className="terminal-commands">
           To perform multiple commands split them using ';'
+        </div>
+        <div className="terminal-commands">
+          Use arrows up/down to scroll through inserted commands
         </div>
         <div className="terminal-commands">
           If terminal session ends, refresh the browser, it will remember
