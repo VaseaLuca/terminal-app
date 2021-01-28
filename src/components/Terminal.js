@@ -59,8 +59,6 @@ function Terminal({
       commands: commandsArr,
     };
     sessionStorage.setItem(countTerminals, JSON.stringify(session));
-   
-        console.log(countTerminals);
  
   }, [
     ws,
