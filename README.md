@@ -26,3 +26,4 @@ To navigate through inserted commands press ↑ and ↓ arrow keys;
 
 The app can hold up to 6 terminals, 
 Each terminal is responsible for its session.
+To clear the session just close the tab and open a new one.
