@@ -5,7 +5,10 @@ import Slider from "react-input-slider";
 import Navbar from "./Navbar";
 import NavItem from "./NavItem";
 import DropdownMenu from "./DropdownMenu";
+import close from "../assets/close.png";
 import "./Terminal.scss";
+
+
 
 function Terminal({
   countTerminals,
@@ -190,33 +193,26 @@ function Terminal({
           </NavItem>
         </Navbar>
         {showColorPicker && (
-          <div
-            style={{ position: "absolute", width: "225px" }}
-            onMouseLeave={() => setShowColorPicker(false)}
-          >
+          <div style={{ position: "absolute", width: "225px" }}>
             <ChromePicker
               color={color}
               onChange={(updatedColor) => setColor(updatedColor.hex)}
             />
+          <img src={close} style={{position: 'absolute', left:'210px', bottom: '-16px', width:'8px', cursor: 'pointer',}} alt="closeTextSize" onClick={() => setShowColorPicker(false)}/>
           </div>
         )}
         {showTextColorPicker && (
-          <div
-            style={{ position: "absolute", width: "225px" }}
-            onMouseLeave={() => setShowTextColorPicker(false)}
-          >
+          <div style={{ position: "absolute", width: "225px" }}>
             <ChromePicker
               styles={{ position: "absolute" }}
               color={textColor}
               onChange={(updatedColor) => setTextColor(updatedColor.hex)}
             />
+          <img src={close} style={{position: 'absolute', left:'210px', bottom: '-16px', width:'8px', cursor: 'pointer',}} alt="closeTextSize" onClick={() => setShowTextColorPicker(false)}/>
           </div>
         )}
         {showTextSizeSlider && (
-          <div
-            style={{ position: "absolute", width: "100%", height: "25px" }}
-            onMouseLeave={() => setShowTextSizeSlider(false)}
-          >
+          <div style={{ position: "absolute", width: "100%" }}>
             <Slider
               style={{ position: "absolute" }}
               axis="x"
@@ -226,6 +222,7 @@ function Terminal({
               x={changeTextSize}
               onChange={({ x }) => setChangeTextSize(x)}
             />
+          <img src={close} style={{position: 'absolute', left:'215px', bottom: '-12px', width:'13px', cursor: 'pointer',}} alt="closeTextSize" onClick={() => setShowTextSizeSlider(false)}/>
           </div>
         )}
       </nav>
