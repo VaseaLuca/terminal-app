@@ -22,15 +22,14 @@
       }
     }
 
-    .close-tag {
-      &:hover {
-        transition: 0.1s ease-in-out ;
-        transform: scale(1.02);
-
-      }
-    }
   }
+}
+.close-tag {
+  &:hover {
+    transition: 0.1s ease-in-out;
+    transform: scale(1.02);
 
+  }
   .terminal-content {
     min-height: 100vh;
     padding: 10px 0 0 0;
