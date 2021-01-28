@@ -198,7 +198,7 @@ function Terminal({
               color={color}
               onChange={(updatedColor) => setColor(updatedColor.hex)}
             />
-          <img src={close} style={{position: 'absolute', left:'210px', bottom: '-16px', width:'8px', cursor: 'pointer',}} alt="closeTextSize" onClick={() => setShowColorPicker(false)}/>
+          <img src={close} style={{position: 'absolute', left:'210px', bottom: '226px', width:'8px', cursor: 'pointer',}} alt="closeTextSize" onClick={() => setShowColorPicker(false)}/>
           </div>
         )}
         {showTextColorPicker && (
@@ -208,7 +208,7 @@ function Terminal({
               color={textColor}
               onChange={(updatedColor) => setTextColor(updatedColor.hex)}
             />
-          <img src={close} style={{position: 'absolute', left:'210px', bottom: '-16px', width:'8px', cursor: 'pointer',}} alt="closeTextSize" onClick={() => setShowTextColorPicker(false)}/>
+          <img src={close} style={{position: 'absolute', left:'210px', bottom: '226px', width:'8px', cursor: 'pointer',}} alt="closeTextSize" onClick={() => setShowTextColorPicker(false)}/>
           </div>
         )}
         {showTextSizeSlider && (
