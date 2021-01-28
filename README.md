@@ -1,6 +1,8 @@
 # Getting started with Terminal Emulator
 
 This project was created with React + WebSocket
+Link to the client : https://terminal-emulator.netlify.app/
+
 Link to the server : https://github.com/VaseaLuca/wscommander
 
 ## Available Commands
