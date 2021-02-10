@@ -8,5 +8,5 @@ const DropdownMenu = ({ children, closeMenuFunc }) => {
       </div>
     </div>
   );
-}
+};
 export default DropdownMenu;

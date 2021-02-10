@@ -8,7 +8,11 @@ import DropdownMenu from "./DropdownMenu";
 import close from "../assets/close.png";
 import "./Terminal.scss";
 
-const Terminal = ({ countTerminals, addTerminalHandler, killTerminalHandler }) => {
+const Terminal = ({
+  countTerminals,
+  addTerminalHandler,
+  killTerminalHandler,
+}) => {
   const [value, setValue] = useState("");
   const [ws] = useState(new WebSocket("wss://ws-commander.herokuapp.com"));
   let getData = JSON.parse(sessionStorage.getItem(countTerminals));
@@ -42,11 +46,10 @@ const Terminal = ({ countTerminals, addTerminalHandler, killTerminalHandler }) =
 
         if (msg.command === "clear") {
           setCommandsArr((commandsArr) => [...commandsArr, msg.command]);
-          setInputs((inputs) => []);
+          setInputs([]);
         }
       };
     }
-
     const session = {
       id: countTerminals,
       txtColor: textColor,
@@ -193,7 +196,7 @@ const Terminal = ({ countTerminals, addTerminalHandler, killTerminalHandler }) =
               style={{
                 position: "absolute",
                 left: "210px",
-                bottom: "-15px",
+                bottom: "225px",
                 width: "8px",
                 cursor: "pointer",
               }}
@@ -215,7 +218,7 @@ const Terminal = ({ countTerminals, addTerminalHandler, killTerminalHandler }) =
               style={{
                 position: "absolute",
                 left: "210px",
-                bottom: "-15px",
+                bottom: "225px",
                 width: "8px",
                 cursor: "pointer",
               }}
@@ -240,7 +243,7 @@ const Terminal = ({ countTerminals, addTerminalHandler, killTerminalHandler }) =
               style={{
                 position: "absolute",
                 left: "215px",
-                bottom: "-12px",
+                bottom: "225px",
                 width: "13px",
                 cursor: "pointer",
               }}
@@ -284,5 +287,5 @@ const Terminal = ({ countTerminals, addTerminalHandler, killTerminalHandler }) =
       </div>
     </div>
   );
-}
+};
 export default Terminal;

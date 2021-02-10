@@ -8,5 +8,5 @@ const Navbar = ({ children }) => {
       <ul className="navbar-nav">{children}</ul>
     </div>
   );
-}
+};
 export default Navbar;
