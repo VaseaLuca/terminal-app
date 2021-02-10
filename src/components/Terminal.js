@@ -8,13 +8,7 @@ import DropdownMenu from "./DropdownMenu";
 import close from "../assets/close.png";
 import "./Terminal.scss";
 
-
-
-function Terminal({
-  countTerminals,
-  addTerminalHandler,
-  killTerminalHandler,
-}) {
+function Terminal({ countTerminals, addTerminalHandler, killTerminalHandler }) {
   const [value, setValue] = useState("");
   const [ws] = useState(new WebSocket("wss://ws-commander.herokuapp.com"));
   let getData = JSON.parse(sessionStorage.getItem(countTerminals));
@@ -62,7 +56,6 @@ function Terminal({
       commands: commandsArr,
     };
     sessionStorage.setItem(countTerminals, JSON.stringify(session));
- 
   }, [
     ws,
     commandsArr,
@@ -72,7 +65,6 @@ function Terminal({
     countTerminals,
     inputs,
   ]);
-  // the arrow up and down function
   function onArrowsHandle(e) {
     if (commandsArr.length > 0) {
       if (e.code === "ArrowUp") {
@@ -112,13 +104,12 @@ function Terminal({
     if (value) {
       execQueue();
       setCount(count + 1);
-      setValue("");
+      setValue(() => "");
     }
   }
   function handleClickFocus() {
     inputFocus.current.focus();
   }
-
   const ShowOnScrenCommands = () => {
     return (
       <div className="terminal-commands">
@@ -198,7 +189,18 @@ function Terminal({
               color={color}
               onChange={(updatedColor) => setColor(updatedColor.hex)}
             />
-          <img src={close} style={{position: 'absolute', left:'210px', bottom: '226px', width:'8px', cursor: 'pointer',}} alt="closeTextSize" onClick={() => setShowColorPicker(false)}/>
+            <img
+              src={close}
+              style={{
+                position: "absolute",
+                left: "210px",
+                bottom: "226px",
+                width: "8px",
+                cursor: "pointer",
+              }}
+              alt="closeTextSize"
+              onClick={() => setShowColorPicker(false)}
+            />
           </div>
         )}
         {showTextColorPicker && (
@@ -208,7 +210,19 @@ function Terminal({
               color={textColor}
               onChange={(updatedColor) => setTextColor(updatedColor.hex)}
             />
-          <img src={close} className='close-tag' style={{position: 'absolute', left:'210px', bottom: '226px', width:'8px', cursor: 'pointer',}} alt="closeTextSize" onClick={() => setShowTextColorPicker(false)}/>
+            <img
+              src={close}
+              className="close-tag"
+              style={{
+                position: "absolute",
+                left: "210px",
+                bottom: "226px",
+                width: "8px",
+                cursor: "pointer",
+              }}
+              alt="closeTextSize"
+              onClick={() => setShowTextColorPicker(false)}
+            />
           </div>
         )}
         {showTextSizeSlider && (
@@ -222,7 +236,18 @@ function Terminal({
               x={changeTextSize}
               onChange={({ x }) => setChangeTextSize(x)}
             />
-          <img src={close} style={{position: 'absolute', left:'215px', bottom: '-12px', width:'13px', cursor: 'pointer',}} alt="closeTextSize" onClick={() => setShowTextSizeSlider(false)}/>
+            <img
+              src={close}
+              style={{
+                position: "absolute",
+                left: "215px",
+                bottom: "-12px",
+                width: "13px",
+                cursor: "pointer",
+              }}
+              alt="closeTextSize"
+              onClick={() => setShowTextSizeSlider(false)}
+            />
           </div>
         )}
       </nav>
@@ -261,5 +286,4 @@ function Terminal({
     </div>
   );
 }
-
 export default Terminal;

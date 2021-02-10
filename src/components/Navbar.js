@@ -1,14 +1,12 @@
-import React from 'react'
+import React from "react";
 
-import './Navbar.scss';
+import "./Navbar.scss";
 
-
-function Navbar({children}) {
+const Navbar = ({ children }) => {
   return (
     <div className="navbar">
       <ul className="navbar-nav">{children}</ul>
     </div>
   );
 }
-
-export default Navbar
+export default Navbar;

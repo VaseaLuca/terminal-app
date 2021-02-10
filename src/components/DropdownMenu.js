@@ -1,8 +1,6 @@
-import React from 'react'
+import React from "react";
 
-function DropdownMenu({ children, closeMenuFunc }) {
-
-
+const DropdownMenu = ({ children, closeMenuFunc }) => {
   return (
     <div className="dropdown-menu">
       <div className="dropdown-list" onClick={closeMenuFunc}>
@@ -11,5 +9,4 @@ function DropdownMenu({ children, closeMenuFunc }) {
     </div>
   );
 }
-
-export default DropdownMenu
+export default DropdownMenu;
