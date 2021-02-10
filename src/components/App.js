@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.scss";
 import Terminal from "./Terminal";
 
-const App = () => {
+function App() {
   const initialCount = JSON.parse(sessionStorage.getItem("id") || 1);
   const [countTerminals, setCountTerminals] = useState(initialCount);
   const terminals = [];

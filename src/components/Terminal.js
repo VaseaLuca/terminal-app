@@ -8,11 +8,11 @@ import DropdownMenu from "./DropdownMenu";
 import close from "../assets/close.png";
 import "./Terminal.scss";
 
-const Terminal = ({
+function Terminal({
   countTerminals,
   addTerminalHandler,
   killTerminalHandler,
-}) => {
+}) {
   const [value, setValue] = useState("");
   const [ws] = useState(new WebSocket("wss://ws-commander.herokuapp.com"));
   let getData = JSON.parse(sessionStorage.getItem(countTerminals));
