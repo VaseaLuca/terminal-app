@@ -243,7 +243,7 @@ const Terminal = ({
               style={{
                 position: "absolute",
                 left: "215px",
-                bottom: "225px",
+                bottom: "-12px",
                 width: "13px",
                 cursor: "pointer",
               }}
