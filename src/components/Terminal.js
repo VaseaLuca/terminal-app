@@ -86,7 +86,6 @@ const Terminal = ({ countTerminals, addTerminalHandler, killTerminalHandler }) =
       }
     }
   }
-
   function handleChange(e) {
     setValue(e.target.value);
   }
@@ -194,7 +193,7 @@ const Terminal = ({ countTerminals, addTerminalHandler, killTerminalHandler }) =
               style={{
                 position: "absolute",
                 left: "210px",
-                bottom: "226px",
+                bottom: "-15px",
                 width: "8px",
                 cursor: "pointer",
               }}
@@ -216,7 +215,7 @@ const Terminal = ({ countTerminals, addTerminalHandler, killTerminalHandler }) =
               style={{
                 position: "absolute",
                 left: "210px",
-                bottom: "226px",
+                bottom: "-15px",
                 width: "8px",
                 cursor: "pointer",
               }}
